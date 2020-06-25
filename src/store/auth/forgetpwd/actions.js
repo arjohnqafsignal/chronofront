@@ -28,21 +28,21 @@ export const userForgetPasswordError = message => {
   };
 };
 
-export const userResetPassword = (user) => {
+export const resetPassword = data => {
   return {
     type: RESET_PASSWORD,
-    payload: user
+    payload: data
   };
 };
 
-export const userResetPasswordError = message => {
+export const userResetPasswordError = (message) => {
   return {
     type: RESET_PASSWORD_ERROR,
     payload: message
   };
 };
 
-export const userResetPasswordSuccess = message => {
+export const userResetPasswordSuccess = (message) => {
   return {
     type: RESET_PASSWORD_SUCCESS,
     payload: message

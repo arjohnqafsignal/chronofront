@@ -14,11 +14,14 @@ import { Link } from "react-router-dom";
 // import images
 import profileImg from "../../assets/images/profile-img.png";
 import logoImg from "../../assets/images/logo.svg";
+import { lang } from "moment";
 
 class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    }
+
 
     // handleValidSubmit
     this.handleValidSubmit = this.handleValidSubmit.bind(this);
@@ -26,14 +29,23 @@ class Register extends Component {
 
   // handleValidSubmit
   handleValidSubmit(event, values) {
-    this.props.registerUser(values);
+    this.props.registerUser({
+      email: values.email,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      company_name: values.company_name,
+      password: values.password,
+      password_confirmation: values.password,
+      user_type: "employer"
+    });
+
   }
 
-    componentDidMount()
-    {
-        this.props.apiError("");
-        this.props.registerUserFailed("");
-    }
+  componentDidMount()
+  {
+
+  }
+  
 
   render() {
     return (

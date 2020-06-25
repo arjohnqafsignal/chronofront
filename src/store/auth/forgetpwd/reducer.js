@@ -10,7 +10,7 @@ import {
 const initialState = {
   forgetSuccessMsg: null,
   forgetError: null,
-  passwords: null,
+  resetPassword: null,
   resetPasswordError: null,
   resetPasswordSuccess: null
 };
@@ -22,7 +22,7 @@ const forgetPassword = (state = initialState, action) => {
         ...state,
         forgetSuccessMsg: null,
         forgetError: null,
-        passwords: null,
+        resetPassword: null,
         resetPasswordError: null,
         resetPasswordSuccess: null
       };
@@ -31,7 +31,8 @@ const forgetPassword = (state = initialState, action) => {
       state = {
         ...state,
         forgetSuccessMsg: action.payload.status,
-        passwords: null,
+        forgetError: null,
+        resetPassword: null,
         resetPasswordError: null,
         resetPasswordSuccess: null
       };
@@ -39,8 +40,9 @@ const forgetPassword = (state = initialState, action) => {
     case FORGET_PASSWORD_ERROR:
       state = { 
         ...state, 
+        forgetSuccessMsg: null,
         forgetError: action.payload,
-        passwords: null,
+        resetPassword: null,
         resetPasswordError: null,
         resetPasswordSuccess: null
       };
@@ -48,16 +50,19 @@ const forgetPassword = (state = initialState, action) => {
     case RESET_PASSWORD:
       state = { 
         ...state, 
+        forgetSuccessMsg: null,
         forgetError: null,
-        passwords: action.payload,
+        forgetError: null,
+        resetPassword: action.payload,
         resetPasswordError: null,
         resetPasswordSuccess: null
       };
+      break;
     case RESET_PASSWORD_ERROR:
       state = { 
         ...state, 
         forgetError: null,
-        passwords: null,
+        resetPassword: null,
         resetPasswordError: action.payload,
         resetPasswordSuccess: null
       };
@@ -66,7 +71,7 @@ const forgetPassword = (state = initialState, action) => {
         state = { 
           ...state, 
           forgetError: null,
-          passwords: null,
+          resetPassword: null,
           resetPasswordError: null,
           resetPasswordSuccess: action.payload
         };

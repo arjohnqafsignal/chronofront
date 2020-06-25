@@ -15,6 +15,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Rightbar from "../CommonForBoth/Rightbar";
 
+import GettingStarted from "../Globals/GettingStarted";
+
 class Layout extends Component {
   constructor(props) {
     super(props);
@@ -101,6 +103,8 @@ class Layout extends Component {
           <div className="main-content">
             {this.props.children}
           </div>
+          
+          <GettingStarted />
           <Footer />
         </div>
 

@@ -20,7 +20,7 @@ function* loginUser({ payload: { user, history } }) {
 function* logoutUser({ payload: { history } }) {
     try {
         sessionStorage.removeItem("authUser");
-        yield put(logoutUserSuccess("Logout Successful."));
+        yield put(logoutUserSuccess("Logout Success."));
         history.push('/login');
     } catch (error) {
         yield put(apiError(error));

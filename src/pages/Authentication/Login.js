@@ -31,11 +31,6 @@ class Login extends Component {
         this.props.loginUser(values, this.props.history);
     }
 
-    componentDidMount()
-    {
-        this.props.apiError("");
-    }
-
     render() {
 
         return (
@@ -77,7 +72,6 @@ class Login extends Component {
 
                                                 {this.props.error && this.props.error ? <Alert color="danger">{this.props.error}</Alert> : null}
                                                 {this.props.verificationError && this.props.verificationError ? <Alert color="danger">{this.props.verificationError}</Alert> : null}
-                                                {this.props.verificationSuccess && this.props.verificationSuccess ? <Alert color="success">{this.props.verificationSuccess}</Alert> : null}
                                                 {this.props.verificationSuccess && this.props.verificationSuccess ? <Alert color="success">{this.props.verificationSuccess}</Alert> : null}
                                                 {this.props.logoutUserSuccess && this.props.logoutUserSuccess ? <Alert color="success">{this.props.logoutUserSuccess}</Alert> : null}
 
@@ -122,8 +116,9 @@ const mapStatetoProps = state => {
     
     const { verificationError, verificationSuccess } = state.Verify;
     const { error, logoutUserSuccess } = state.Login;
+    console.log(logoutUserSuccess);
     return { error, verificationError,  verificationSuccess, logoutUserSuccess};
 }
 
-export default withRouter(connect(mapStatetoProps, { loginUser,apiError })(Login));
+export default withRouter(connect(mapStatetoProps, { loginUser })(Login));
 

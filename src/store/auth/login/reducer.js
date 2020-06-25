@@ -1,8 +1,7 @@
 import { LOGIN_USER, LOGIN_SUCCESS, LOGOUT_USER, LOGOUT_USER_SUCCESS, API_ERROR } from './actionTypes';
-import { logoutUserSuccess } from './actions';
 
 const initialState = {
-    error: "dkjkdjfkdjfkdjfk",
+    error: null,
     loading: false,
     logoutUserSuccess: null
 }
@@ -13,6 +12,7 @@ const login = (state = initialState, action) => {
             state = {
                 ...state,
                 loading: true,
+                error: null,
                 logoutUserSuccess: null
             }
             break;
@@ -20,18 +20,21 @@ const login = (state = initialState, action) => {
             state = {
                 ...state,
                 loading: false,
+                error: null,
                 logoutUserSuccess: null
             }
             break;
         case LOGOUT_USER:
             state = { 
                 ...state,
+                error: null,
                 logoutUserSuccess: null
              };
             break;
         case LOGOUT_USER_SUCCESS:
             state = { 
                 ...state,
+                error: null,
                 logoutUserSuccess: action.payload
             };
             break;

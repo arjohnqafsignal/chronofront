@@ -2,7 +2,7 @@ import { takeEvery, fork, put, all, call } from "redux-saga/effects";
 
 // Login Redux States
 import { FORGET_PASSWORD, RESET_PASSWORD} from "./actionTypes";
-import { userForgetPasswordSuccess, userForgetPasswordError } from "./actions";
+import { userForgetPasswordSuccess, userForgetPasswordError, userResetPasswordError, userResetPasswordSuccess } from "./actions";
 
 import { forgotPassword, resetPassword } from '../../../services/auth'
 
@@ -15,13 +15,17 @@ function* forgetUser({ payload: { user } }) {
     yield put(userForgetPasswordError(error));
   }
 }
-function* resetUser({ payload: { user } }) {
+function* resetUser( { payload } ) {
   try {
-    console.log(user);
-    //const response = yield call(forgotPassword, {email: user.email});
-    //yield put(userForgetPasswordSuccess(response));
+    const response = yield call(resetPassword, {
+      email: payload.email,
+      token: payload.token,
+      password: payload.password,
+      password_confirmation: payload.password_confirmation
+    });
+    yield put(userResetPasswordSuccess(response));
   } catch (error) {
-    //yield put(userForgetPasswordError(error));
+    yield put(userResetPasswordError(error));
   }
 }
 

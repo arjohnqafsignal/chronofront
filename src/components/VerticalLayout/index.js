@@ -16,6 +16,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import Rightbar from "../CommonForBoth/Rightbar";
+import GettingStarted from "../Globals/GettingStarted";
 
 class Layout extends Component {
   constructor(props) {
@@ -109,8 +110,12 @@ class Layout extends Component {
             type={this.props.leftSideBarType}
             isMobile={this.state.isMobile} />
           <div className="main-content">
+            
+          <GettingStarted />  
             {this.props.children}
           </div>
+          
+         
           <Footer />
         </div>
         <Rightbar />

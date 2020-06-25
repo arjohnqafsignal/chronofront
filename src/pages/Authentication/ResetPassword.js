@@ -10,7 +10,7 @@ import { withRouter, Link } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // action
-import { userResetPassword } from "../../store/actions";
+import { resetPassword } from "../../store/actions";
 
 // import images
 import profile from "../../assets/images/profile-img.png";
@@ -40,9 +40,17 @@ class ResetPassword extends Component {
 
   }
 
+
   // handleValidSubmit
   handleValidSubmit(event, values) {
-    this.props.userResetPassword(values, this.props.history);
+    
+    this.props.resetPassword({
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+      token: values.token,
+      email: values.email,
+      history: this.props.history
+    });
   }
 
   render() {
@@ -60,8 +68,8 @@ class ResetPassword extends Component {
                     <Row>
                       <Col className="col-7">
                         <div className="text-primary p-4">
-                          <h5 className="text-primary">Welcome Back !</h5>
-                          <p>Sign in to continue to Skote.</p>
+                          <h5 className="text-primary">Reset Password !</h5>
+                          <p>Provide us your new password.</p>
                         </div>
                       </Col>
                       <Col className="col-5 align-self-end">
@@ -156,7 +164,7 @@ class ResetPassword extends Component {
                       Login
                       </Link>{" "}
                   </p>
-                  <p>© {new Date().getFullYear()} Skote. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                  <p>© {new Date().getFullYear()} Chrono. Crafted with <i className="mdi mdi-heart text-danger"></i> by SingleDraft</p>
                 </div>
               </Col>
             </Row>
@@ -173,5 +181,5 @@ const mapStatetoProps = state => {
 };
 
 export default withRouter(
-  connect(mapStatetoProps, { userResetPassword })(ResetPassword)
+  connect(mapStatetoProps, { resetPassword })(ResetPassword)
 );
